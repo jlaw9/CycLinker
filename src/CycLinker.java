@@ -1,7 +1,6 @@
 import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
-// TODO add a command line argument parser
 import org.apache.commons.cli.*;
 
 public class CycLinker {
