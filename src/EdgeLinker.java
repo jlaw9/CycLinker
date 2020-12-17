@@ -3,13 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 import org.apache.commons.cli.*;
 
-public class CycLinker {
-	/* This program takes 3 arguments:
-	 * args[0]: graph input file --> details in 'InputReader' file.
-	 * args[1]: start/end points --> details in 'InputReader' file.
-	 * args[2]: output file name prefix --> details in 'OutputReader' file.
-	 * args[3]: maximum number of paths to write --> details in 'Algorithm' file.
-	 */
+public class EdgeLinker {
 	public static void main(String[] args)  throws IOException {
 		
 		Options options = new Options();
@@ -32,7 +26,7 @@ public class CycLinker {
 		Option multirun = new Option("m", "multi-run", false, "Option to read multiple start-ends file from the --start-ends option");
 		options.addOption(multirun);
 
-		Option edgepenalty = new Option("e", "edge-penalty", true, "Not yet implemented! Add the natural log of the specified penalty to the cost of each edge. This will effectively increase the cost of each path by the length * edge penalty");
+		Option edgepenalty = new Option("e", "edge-penalty", true, "Add the natural log of the specified penalty to the cost of each edge. This will effectively increase the cost of each path by the length * edge penalty");
 		options.addOption(edgepenalty);
 		
 		Option startEndsPenaltyOpt = new Option("p", "start-ends-penalty", false, "Set the cost specified in the third column of the start-ends file to be the cost of the super-source->start and end->super-target edges. Otherwise will be 0");
@@ -46,7 +40,7 @@ public class CycLinker {
             cmd = parser.parse(options, args);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
-            formatter.printHelp("CycLinker", options);
+            formatter.printHelp("EdgeLinker", options);
 
             System.exit(1);
             return;
@@ -106,7 +100,7 @@ public class CycLinker {
                 input.RemoveStartEnd();
             }
             // we already printed the stats abou the # of sources and targets in the network
-            System.out.println("Running Cyclinker on " + startEnds.size() + " sets of sources and targets");
+            System.out.println("Running EdgeLinker on " + startEnds.size() + " sets of sources and targets");
         }
         else{
         	System.out.println("Reading the sources and targets from the file: " + startEndsArg);

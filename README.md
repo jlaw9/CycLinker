@@ -1,6 +1,11 @@
-# CycLinker
+# EdgeLinker
 Run with the following command:
 
-java -cp bin CycLinker [edges file name] [Receptor/TranscriptionFactor file name] [output prefix]
+```
+java -cp bin:bin/commons-cli-1.3.1.jar EdgeLinker --network [net-file] --start-ends [start-ends-file] --out-pref [output-prefix] 
+```
 
-Example: java -cp bin CycLinker example-inputs/2015pathlinker-weighted.txt example-inputs/IL6-nodes.txt IL6
+Example: 
+```
+java -cp bin:bin/commons-cli-1.3.1.jar EdgeLinker --network example-inputs/2015pathlinker-weighted.txt --start-ends example-inputs/IL6-nodes.txt --out-pref IL6 
+```
